@@ -1,5 +1,11 @@
 # Checks the TTL of your instances, if expired can stop or terminate them.                         
 resource "aws_lambda_function" "EC2Reaper" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: aws_lambda_permission.action is not configured
+  # oak9: aws_lambda_permission.principal is not configured
+  # oak9: Principal is not configured
+  # oak9: CodeSha256 is not configured
   filename         = "./files/EC2Reaper.zip"
   function_name    = "EC2Reaper"
   role             = "${aws_iam_role.lambda_stop_and_terminate_instances.arn}"
@@ -32,6 +38,9 @@ resource "aws_cloudwatch_event_target" "reaper_report" {
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch_check_ttls" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: CodeSha256 is not configured
   statement_id   = "AllowExecutionFromCloudWatch"
   action         = "lambda:InvokeFunction"
   function_name  = "${aws_lambda_function.EC2Reaper.function_name}"

@@ -1,5 +1,11 @@
 # Checks the TTL of your instances, if expired can stop or terminate them.                         
 resource "aws_lambda_function" "ASGReaper" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: aws_lambda_permission.action is not configured
+  # oak9: aws_lambda_permission.principal is not configured
+  # oak9: Principal is not configured
+  # oak9: CodeSha256 is not configured
   filename         = "./files/ASGReaper.zip"
   function_name    = "ASGReaper"
   role             = "${aws_iam_role.lambda_terminate_asgs.arn}"
@@ -32,6 +38,9 @@ resource "aws_cloudwatch_event_target" "asg_reaper_report" {
 }
 
 resource "aws_lambda_permission" "asg_allow_cloudwatch_check_ttls" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: CodeSha256 is not configured
   statement_id   = "AllowExecutionFromCloudWatch"
   action         = "lambda:InvokeFunction"
   function_name  = "${aws_lambda_function.ASGReaper.function_name}"

@@ -1,5 +1,11 @@
 # Notify about untagged instances and their key names.                           
 resource "aws_lambda_function" "notifyUntaggedInstances" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: aws_lambda_permission.action is not configured
+  # oak9: aws_lambda_permission.principal is not configured
+  # oak9: Principal is not configured
+  # oak9: CodeSha256 is not configured
   filename         = "./files/notifyUntaggedInstances.zip"
   function_name    = "notifyUntaggedInstances"
   role             = "${aws_iam_role.lambda_notify.arn}"
@@ -32,6 +38,9 @@ resource "aws_cloudwatch_event_target" "daily_untagged_report" {
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch_untagged_instances" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: CodeSha256 is not configured
   statement_id   = "AllowExecutionFromCloudWatch"
   action         = "lambda:InvokeFunction"
   function_name  = "${aws_lambda_function.notifyUntaggedInstances.function_name}"
