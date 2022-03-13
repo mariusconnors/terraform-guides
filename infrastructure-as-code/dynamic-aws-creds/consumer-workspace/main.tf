@@ -44,6 +44,13 @@ data "aws_ami" "ubuntu" {
 
 # Create AWS EC2 Instance
 resource "aws_instance" "main" {
+  BlockDeviceMappings.Ebs.Encrypted = true
+  # oak9: KeyName is not configured
+  NetworkInterfaces.AssociatePublicIpAddress = false
+  # oak9: NetworkInterfaces.GroupSet is not configured
+  # oak9: SecurityGroupIds is not configured
+  # oak9: aws_ec2_client_vpn_network_association.security_groups is not configured
+  SourceDestCheck = false
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.nano"
 

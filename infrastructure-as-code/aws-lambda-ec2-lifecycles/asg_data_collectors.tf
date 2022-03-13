@@ -3,6 +3,12 @@
 # or running instances.
 
 resource "aws_lambda_function" "getUntaggedASGs" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: aws_lambda_permission.action is not configured
+  # oak9: aws_lambda_permission.principal is not configured
+  # oak9: Principal is not configured
+  # oak9: CodeSha256 is not configured
   filename         = "./files/getUntaggedASGs.zip"
   function_name    = "getUntaggedASGs"
   role             = "${aws_iam_role.lambda_read_instances.arn}"
@@ -20,6 +26,12 @@ resource "aws_lambda_function" "getUntaggedASGs" {
 }
 
 resource "aws_lambda_function" "getTaggedASGs" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: aws_lambda_permission.action is not configured
+  # oak9: aws_lambda_permission.principal is not configured
+  # oak9: Principal is not configured
+  # oak9: CodeSha256 is not configured
   filename         = "./files/getTaggedASGs.zip"
   function_name    = "getTaggedASGs"
   role             = "${aws_iam_role.lambda_read_instances.arn}"
