@@ -3,6 +3,12 @@
 # or running instances.
 
 resource "aws_lambda_function" "getUntaggedInstances" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: aws_lambda_permission.action is not configured
+  # oak9: aws_lambda_permission.principal is not configured
+  # oak9: Principal is not configured
+  # oak9: CodeSha256 is not configured
   filename         = "./files/getUntaggedInstances.zip"
   function_name    = "getUntaggedInstances"
   role             = "${aws_iam_role.lambda_read_instances.arn}"
@@ -20,6 +26,12 @@ resource "aws_lambda_function" "getUntaggedInstances" {
 }
 
 resource "aws_lambda_function" "getTaggedInstances" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: aws_lambda_permission.action is not configured
+  # oak9: aws_lambda_permission.principal is not configured
+  # oak9: Principal is not configured
+  # oak9: CodeSha256 is not configured
   filename         = "./files/getTaggedInstances.zip"
   function_name    = "getTaggedInstances"
   role             = "${aws_iam_role.lambda_read_instances.arn}"
@@ -37,6 +49,12 @@ resource "aws_lambda_function" "getTaggedInstances" {
 }
 
 resource "aws_lambda_function" "getRunningInstances" {
+  # oak9: aws_lambda_function.role is not configured
+  # oak9: aws_lambda_function.vpc_config is not configured
+  # oak9: aws_lambda_permission.action is not configured
+  # oak9: aws_lambda_permission.principal is not configured
+  # oak9: Principal is not configured
+  # oak9: CodeSha256 is not configured
   filename         = "./files/getRunningInstances.zip"
   function_name    = "getRunningInstances"
   role             = "${aws_iam_role.lambda_read_instances.arn}"

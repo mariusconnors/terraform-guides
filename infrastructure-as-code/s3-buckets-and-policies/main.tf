@@ -37,11 +37,26 @@ variable "shared_s3_vpce_id" {
 }
 
 resource "aws_kms_key" "my_key" {
+  aws_kms_key.key_usage = "ENCRYPT_DECRYPT"
+  # oak9: DescribeKey.CustomerMasterKeySpec is not configured
+  # oak9: DescribeKey.Origin is not configured
+  aws_kms_key.enable_key_rotation = true
+  # oak9: KeyPolicy is not configured
   description             = "This key is used to encrypt bucket objects"
   deletion_window_in_days = 10
 }
 
 resource "aws_s3_bucket" "bucket_0" {
+  # oak9: AccessControl is not configured
+  # oak9: PublicAccessBlockConfiguration is not configured
+  # oak9: aws_s3_access_point.public_access_block_configuration is not configured
+  aws_s3_account_public_access_block.block_public_acls = true
+  aws_s3_account_public_access_block.ignore_public_acls = true
+  aws_s3_account_public_access_block.block_public_policy = true
+  aws_s3_account_public_access_block.restrict_public_buckets = true
+  # oak9: aws_s3_bucket.cors_rule.allowed_methods is not configured
+  # oak9: aws_s3_bucket.cors_rule.allowed_methods should be set to any of GET,HEAD,POST
+  # oak9: PolicyDocument is not configured
   bucket = var.bucket_name
   acl    = var.bucket_acl
 
@@ -72,6 +87,16 @@ POLICY
 }
 
 resource "aws_s3_bucket" "bucket_1" {
+  # oak9: AccessControl is not configured
+  # oak9: PublicAccessBlockConfiguration is not configured
+  # oak9: aws_s3_access_point.public_access_block_configuration is not configured
+  aws_s3_account_public_access_block.block_public_acls = true
+  aws_s3_account_public_access_block.ignore_public_acls = true
+  aws_s3_account_public_access_block.block_public_policy = true
+  aws_s3_account_public_access_block.restrict_public_buckets = true
+  # oak9: aws_s3_bucket.cors_rule.allowed_methods is not configured
+  # oak9: aws_s3_bucket.cors_rule.allowed_methods should be set to any of GET,HEAD,POST
+  # oak9: PolicyDocument is not configured
   bucket = "roger-bucket-1"
   acl    = var.bucket_acl
 
@@ -87,6 +112,16 @@ resource "aws_s3_bucket" "bucket_1" {
 }
 
 resource "aws_s3_bucket" "bucket_2" {
+  # oak9: AccessControl is not configured
+  # oak9: PublicAccessBlockConfiguration is not configured
+  # oak9: aws_s3_access_point.public_access_block_configuration is not configured
+  aws_s3_account_public_access_block.block_public_acls = true
+  aws_s3_account_public_access_block.ignore_public_acls = true
+  aws_s3_account_public_access_block.block_public_policy = true
+  aws_s3_account_public_access_block.restrict_public_buckets = true
+  # oak9: aws_s3_bucket.cors_rule.allowed_methods is not configured
+  # oak9: aws_s3_bucket.cors_rule.allowed_methods should be set to any of GET,HEAD,POST
+  # oak9: PolicyDocument is not configured
   bucket = "roger-bucket-2"
   acl    = var.bucket_acl
 
