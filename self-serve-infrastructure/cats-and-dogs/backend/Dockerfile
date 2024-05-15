@@ -1,4 +1,4 @@
-FROM redis
+FROM redis:7.2-bookworm
 
 RUN apt-get update 
 RUN apt-get install -y curl 
