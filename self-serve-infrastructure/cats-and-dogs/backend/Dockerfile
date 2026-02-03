@@ -1,4 +1,4 @@
-FROM redis
+FROM redis:8.4.0-bookworm
 
 RUN apt-get update 
 RUN apt-get install -y curl 
